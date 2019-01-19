@@ -11,7 +11,7 @@
         android:id="@+id/GameHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/backButtonPlayerActivity"
+        android:layout_alignTop="@+id/backButtonQuestionActivity"
         android:layout_centerHorizontal="true"
         android:text="How Many?"
         android:textColor="@android:color/background_light"
@@ -19,7 +19,7 @@
         android:textStyle="normal|bold" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/backButtonPlayerActivity"
+        android:id="@+id/backButtonQuestionActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -38,9 +38,9 @@
         android:id="@+id/playersHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/backButtonPlayerActivity"
+        android:layout_below="@+id/backButtonQuestionActivity"
         android:layout_marginTop="32dp"
-        android:layout_toEndOf="@+id/backButtonPlayerActivity"
+        android:layout_toEndOf="@+id/backButtonQuestionActivity"
         android:fontFamily="monospace"
         android:text="Wie heißen die Spieler?"
         android:textColor="@android:color/background_light"
@@ -70,13 +70,14 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/nameEditText"
         android:layout_alignTop="@+id/GotTextView"
-        android:layout_marginEnd="28dp" />
+        android:layout_marginEnd="28dp"
+        android:longClickable="true" />
 
     <EditText
         android:id="@+id/nameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/backButtonPlayerActivity"
+        android:layout_alignStart="@+id/backButtonQuestionActivity"
         android:layout_alignTop="@+id/addPlayerButtonPlayerActivity"
         android:ems="10"
         android:hint="Name des Spielers"
