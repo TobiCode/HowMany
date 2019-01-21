@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context="com.example.tobi.howmany.PlayersActivity">
+    tools:context="com.example.tobi.howmany.PlayersActivity"
+    android:focusableInTouchMode="true">
 
     <TextView
         android:id="@+id/GameHeader"
@@ -42,7 +43,7 @@
         android:layout_marginTop="32dp"
         android:layout_toEndOf="@+id/backButtonQuestionActivity"
         android:fontFamily="monospace"
-        android:text="Wie heißen die Spieler?"
+        android:text="Wie heißen die Spieler(der Reihe nach)?"
         android:textColor="@android:color/background_light"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -81,7 +82,8 @@
         android:layout_alignTop="@+id/addPlayerButtonPlayerActivity"
         android:ems="10"
         android:hint="Name des Spielers"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        />
 
     <TextView
         android:id="@+id/GotTextView"

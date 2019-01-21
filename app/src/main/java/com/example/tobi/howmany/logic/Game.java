@@ -15,6 +15,7 @@ public class Game {
     public Game(Questions questions, int maxPointsToReach){
         this.questions = questions;
         this.maxPointsToReach = maxPointsToReach;
+        players = new LinkedList<>();
     }
 
     public LinkedList<Player> addPlayer(Player player){
@@ -50,5 +51,31 @@ public class Game {
 
     public void setPlayers(LinkedList<Player> players) {
         this.players = players;
+    }
+
+    public boolean removePlayer(String name){
+        if(players.size() <= 0){
+            return false;
+        }
+        for (Player player : players){
+            if (player.getName().equals(name)){
+                players.remove(player);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean playerNameExists(String name){
+        if (!(players.size()>0)){
+            return false;
+        }
+        for (Player player: players)
+        {
+            if (player.getName().equals( name)){
+                return true;
+        }
+        }
+        return false;
     }
 }
