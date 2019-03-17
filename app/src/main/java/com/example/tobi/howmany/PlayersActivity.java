@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.tobi.howmany.logic.ConstantsOfGame;
 import com.example.tobi.howmany.logic.Game;
 import com.example.tobi.howmany.logic.Player;
 import com.example.tobi.howmany.logic.Questions;
@@ -24,9 +25,8 @@ public class PlayersActivity extends AppCompatActivity {
     public EditText nameOfPlayer;
     public LinkedList<String> playersListItems;
     public int playerCounter = 0;
-
-    public Game game;
-    public int maxPointsToReach = 12;
+    public Questions questions;
+    private Game game;
     //Weiß, blau, grün, gelb
     public String[] colors = new String[]{"#FFFFFF", "#f0f404","#04f4b0","#6c9bf7"};
 
@@ -39,9 +39,9 @@ public class PlayersActivity extends AppCompatActivity {
         nameOfPlayer = (EditText) findViewById(R.id.nameEditText);
         playersListItems = new LinkedList<String>();
         LinkedList<String> questionsList = CSVReader.readExcelFileFromAssets(getApplicationContext());
-        Questions questions = new Questions(questionsList);
-        game = new Game(questions, maxPointsToReach);
+        questions = new Questions(questionsList);
 
+        game = new Game(questions, ConstantsOfGame.maxPointsToReach);
 
         playersListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
@@ -63,6 +63,7 @@ public class PlayersActivity extends AppCompatActivity {
     public void backButtonOnClick(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
 
@@ -92,6 +93,9 @@ public class PlayersActivity extends AppCompatActivity {
 
     public void startGameOnClick(View view) {
         Toast.makeText(this, "Start Game", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, QuestionActivity.class);
+        intent.putExtra("Game", game);
+        startActivity(intent);
     }
 
     public void updateListView() {

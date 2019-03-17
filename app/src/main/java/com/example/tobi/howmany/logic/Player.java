@@ -1,10 +1,12 @@
 package com.example.tobi.howmany.logic;
 
+import java.io.Serializable;
+
 /**
  * Created by Tobi on 19.01.2019.
  */
 
-public class Player {
+public class Player implements Serializable{
 
     private String name;
     private String color;

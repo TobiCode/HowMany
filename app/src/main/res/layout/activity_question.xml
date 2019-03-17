@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context="com.example.tobi.howmany.QuestionActivity">
+    tools:context="com.example.tobi.howmany.QuestionActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/GameHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/backButtonQuestionActivity"
-        android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="false"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:text="How Many?"
         android:textColor="@android:color/background_light"
         android:textSize="20sp"
-        android:textStyle="normal|bold" />
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toTopOf="@+id/currentPlayerDescribingTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/backButtonQuestionActivity"
@@ -24,14 +34,160 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginBottom="167dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="32dp"
         android:background="@color/colorAccent"
         android:clickable="true"
         android:focusable="auto"
         android:onClick="backButtonOnClick"
         android:src="?android:attr/actionModeCloseDrawable"
         app:backgroundTint="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/questionBoxTextView"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
         app:rippleColor="@android:color/background_light" />
 
-</android.widget.RelativeLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/backButtonQuestionActivity"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_toEndOf="@+id/backButtonQuestionActivity"
+        android:text="Menü"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/currentPlayerDescribingTextView"
+        app:layout_constraintEnd_toStartOf="@+id/GameHeader"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/currentPlayerDescribingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/backButtonQuestionActivity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:text="Spieler an der Reihe:"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/currentPlayerTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GameHeader" />
+
+    <TextView
+        android:id="@+id/questionBoxTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/currentPlayerTextView"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="61dp"
+        android:text="testestetstesttestestetstesttestestetstesttestestetstesttestestetstesttestestetstesttestestetstesttestestetstesttestestetstesttestestetstesttestestetstesttestestetstesttestestetstest"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/yesButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentPlayerTextView" />
+
+    <TextView
+        android:id="@+id/currentPlayerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/currentPlayerDescribingTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="Player"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentPlayerDescribingTextView" />
+
+    <Button
+        android:id="@+id/nextPlayerButton"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="52dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/colorAccent"
+        android:text="Nächster Spieler"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/numberGuessPicker"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/yesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/backButtonQuestionActivity"
+        android:layout_below="@+id/questionBoxTextView"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginStart="56dp"
+        android:background="#007c29"
+        android:text="Ja"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toStartOf="@+id/noButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/noButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/yesButton"
+        android:layout_alignEnd="@+id/currentPlayerTextView"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="3dp"
+        android:background="#f0620000"
+        android:text="Nein"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/yesButton"
+        app:layout_constraintTop_toBottomOf="@+id/questionBoxTextView" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/nextPlayerButton"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Wie viele in der Runde antworten mit Ja? Gib deinen TIpp ab:"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noButton" />
+
+    <NumberPicker
+        android:id="@+id/numberGuessPicker"
+        android:layout_width="63dp"
+        android:layout_height="97dp"
+        android:layout_alignTop="@+id/textView6"
+        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="107dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/textView2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nextPlayerButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+</android.support.constraint.ConstraintLayout>

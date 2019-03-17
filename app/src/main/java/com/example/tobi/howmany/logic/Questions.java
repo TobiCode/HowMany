@@ -1,5 +1,7 @@
 package com.example.tobi.howmany.logic;
 
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
 
@@ -7,7 +9,7 @@ import java.util.Set;
  * Created by Tobi on 19.01.2019.
  */
 
-public class Questions {
+public class Questions implements Serializable{
 
     LinkedList<String> questionsList;
 
@@ -15,6 +17,8 @@ public class Questions {
 
     public Questions(LinkedList<String> questionsList) {
         this.questionsList = questionsList;
+        questionsOFTheGame = new HashSet<>();
+
     }
 
 

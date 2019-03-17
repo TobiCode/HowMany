@@ -1,12 +1,13 @@
 package com.example.tobi.howmany.logic;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  * Created by Tobi on 19.01.2019.
  */
 
-public class Game {
+public class Game implements Serializable {
 
     private int maxPointsToReach;
     private Questions questions;
