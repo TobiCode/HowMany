@@ -8,9 +8,18 @@ import java.io.Serializable;
 
 public class Player implements Serializable{
 
+    private int currentGuess;
     private String name;
     private String color;
     private int points;
+
+    public int getCurrentGuess() {
+        return currentGuess;
+    }
+
+    public void setCurrentGuess(int currentGuess) {
+        this.currentGuess = currentGuess;
+    }
 
     public Player(String name, String color){
         this.name = name;

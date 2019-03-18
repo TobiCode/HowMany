@@ -1,5 +1,6 @@
 package com.example.tobi.howmany;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -92,6 +93,9 @@ public class PlayersActivity extends AppCompatActivity {
 
 
     public void startGameOnClick(View view) {
+        if(game.getPlayers().size() < 2){
+            Toast.makeText(getApplicationContext(), "Mehr als 2 SPieler benötigt", Toast.LENGTH_SHORT).show();
+        }
         Toast.makeText(this, "Start Game", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, QuestionActivity.class);
         intent.putExtra("Game", game);
