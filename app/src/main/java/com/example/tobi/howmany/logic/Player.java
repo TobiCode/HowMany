@@ -51,4 +51,6 @@ public class Player implements Serializable{
         this.points = points;
     }
 
+    public void addPoints(int pointsToAdd){this.points += pointsToAdd;}
+
 }
