@@ -2,10 +2,12 @@ package com.example.tobi.howmany;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -24,7 +26,7 @@ public class PlayersActivity extends AppCompatActivity {
 
     public ListView playersListView;
     public EditText nameOfPlayer;
-    public LinkedList<String> playersListItems;
+    public LinkedList<String> playerNames;
     public int playerCounter = 0;
     public Questions questions;
     private Game game;
@@ -38,7 +40,7 @@ public class PlayersActivity extends AppCompatActivity {
 
         playersListView = (ListView) findViewById(R.id.playerListVIew);
         nameOfPlayer = (EditText) findViewById(R.id.nameEditText);
-        playersListItems = new LinkedList<String>();
+        playerNames = new LinkedList<String>();
         LinkedList<String> questionsList = CSVReader.readExcelFileFromAssets(getApplicationContext());
         questions = new Questions(questionsList);
 
@@ -50,8 +52,8 @@ public class PlayersActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                                            int pos, long id) {
                 playerCounter -= 1;
-                String nameOfDeletion = playersListItems.get(pos);
-                playersListItems.remove(pos);
+                String nameOfDeletion = playerNames.get(pos);
+                playerNames.remove(pos);
                 game.removePlayer(nameOfDeletion);
                 updateListView();
                 Toast.makeText(PlayersActivity.this, "Spieler " + nameOfDeletion + " gelöscht", Toast.LENGTH_SHORT).show();
@@ -76,7 +78,7 @@ public class PlayersActivity extends AppCompatActivity {
                 int color_index = playerCounter % colors.length;
                 Player newPlayer = new Player(playerName, colors[color_index]);
                 game.addPlayer(newPlayer);
-                playersListItems.add(playerCounter + ". " + playerName);
+                playerNames.add(playerName);
                 updateListView();
                 nameOfPlayer.setText("");
             }
@@ -90,8 +92,7 @@ public class PlayersActivity extends AppCompatActivity {
 
     }
 
-
-
+    
     public void startGameOnClick(View view) {
         if(game.getPlayers().size() < 2){
             Toast.makeText(getApplicationContext(), "Mehr als 2 Spieler benötigt", Toast.LENGTH_SHORT).show();
@@ -108,17 +109,22 @@ public class PlayersActivity extends AppCompatActivity {
         //Create order
         LinkedList<String> playersListItemsCopy = new LinkedList<String>();
         int counter = 1;
-        for (String name: playersListItems){
-            StringBuilder  str = new StringBuilder(name);
-            str.setCharAt(0, ((char)(counter + '0')));
-            playersListItemsCopy.add(str.toString());
+        for (String name: playerNames){
+            String new_name = counter + ". " + name;
+            playersListItemsCopy.add(new_name);
             counter += 1;
         }
-        playersListItems = playersListItemsCopy;
-        Log.i("Debug: " , playersListItems.toString());
-        String[] playersArray = playersListItems.toArray(new String[playersListItems.size()]);
+        final String[] playersArray = playersListItemsCopy.toArray(new String[playersListItemsCopy.size()]);
         ArrayAdapter<String> arrayAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, playersArray);
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, playersArray){
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        View v = super.getView(position, convertView, parent);
+                        //your condition logic
+                        v.setBackgroundColor(Color.parseColor(game.getPlayers().get(position).getColor()));
+                        return v;
+                    }
+                };
         // Set The Adapter
         playersListView.setAdapter(arrayAdapter);
     }
