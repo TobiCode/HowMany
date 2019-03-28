@@ -31,7 +31,14 @@ public class PlayersActivity extends AppCompatActivity {
     public Questions questions;
     private Game game;
     //Weiß, blau, grün, gelb
-    public String[] colors = new String[]{"#FFFFFF", "#f0f404","#04f4b0","#6c9bf7"};
+    public String[] colorsold = new String[]{"#FFFFFF", "#f0f404","#04f4b0","#6c9bf7"};
+    public String[] colorsbackup = new String[]{"#FF8432", "#A2F252","#59DBD0","#333333", "#CECECE"};
+    //https://coolors.co/efeae3-fec400-44c18e-1f49bf-fd85a2
+    public String[] colorskwoat = new String[]{"#EFEAE3", "#FEC400","#44C18E","#1F49BF", "#FD85A2"};
+    //https://coolors.co/ff8300-f80089-8b00ff-2bb5ff-1dff00
+    public String[] colorshappy = new String[]{"#FF8300", "#F80089","#8B00FF","#2BB5FF", "#1DFF00"};
+    public String[] colors = new String[]{"#FF8300", "#F80089","#8B00FF","#2BB5FF", "#1DFF00"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +99,7 @@ public class PlayersActivity extends AppCompatActivity {
 
     }
 
-    
+
     public void startGameOnClick(View view) {
         if(game.getPlayers().size() < 2){
             Toast.makeText(getApplicationContext(), "Mehr als 2 Spieler benötigt", Toast.LENGTH_SHORT).show();

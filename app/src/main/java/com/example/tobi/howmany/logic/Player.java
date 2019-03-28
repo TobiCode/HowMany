@@ -1,6 +1,9 @@
 package com.example.tobi.howmany.logic;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
+import java.util.Comparator;
 
 /**
  * Created by Tobi on 19.01.2019.
@@ -12,6 +15,7 @@ public class Player implements Serializable{
     private String name;
     private String color;
     private int points;
+    private int lastPointsEarned;
 
     public int getCurrentGuess() {
         return currentGuess;
@@ -52,5 +56,13 @@ public class Player implements Serializable{
     }
 
     public void addPoints(int pointsToAdd){this.points += pointsToAdd;}
+
+    public int getLastPointsEarned() {
+        return lastPointsEarned;
+    }
+
+    public void setLastPointsEarned(int lastPointsEarned) {
+        this.lastPointsEarned = lastPointsEarned;
+    }
 
 }

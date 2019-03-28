@@ -130,7 +130,7 @@ public class QuestionActivity extends AppCompatActivity {
             } else {
                 //Auflösung + ResultIntent Change
                 givePointsToPlayers(players, (ConstantsOfGame.pointsDistribution));
-                Intent intent = new Intent(this, QuestionActivity.class);
+                Intent intent = new Intent(this, ResultActivity.class);
                 intent.putExtra("Game", game);
                 finish();
                 startActivity(intent);
@@ -151,6 +151,7 @@ public class QuestionActivity extends AppCompatActivity {
                 addPoints = 0;
             }
             player.addPoints(addPoints);
+            player.setLastPointsEarned(addPoints);
             Log.i("DebugPoints: ", "Player " + player.getName() + " points = " + player.getPoints());
         }
     }
